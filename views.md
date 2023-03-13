@@ -1,4 +1,4 @@
-#Views
+# Views
 
 When your controller method is called you will most of the times want to render a view.
 There you can utilize the Asatru\View\ViewHandler class. You can specify three different

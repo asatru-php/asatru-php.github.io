@@ -1,4 +1,4 @@
-#Caching
+# Caching
 
 Via the Asatru CLI you can create a caching model and migration. 
 ```plaintext

@@ -1,4 +1,4 @@
-#Authentication
+# Authentication
 
 Via the Asatru CLI you can create an authentication model and migration. 
 ```plaintext
