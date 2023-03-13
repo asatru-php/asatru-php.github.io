@@ -20,7 +20,7 @@ second argument a key-value pair of yields and as last argument the key-value pa
 variables array.
 
 A layout file is used as your basis view layout. There you can for instance specify the
-header of the HTML document and a footer. A yield is defined via {% name %} where
+header of the HTML document and a footer. A yield is defined via { % name % } where
 „name“ is the name of the yield which is used via setYield(). Basically every yield token will
 then be replaced with the content of the yield file.
 
