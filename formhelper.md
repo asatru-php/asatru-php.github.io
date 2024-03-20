@@ -6,10 +6,10 @@ render forms into the document. It provides the following methods:
 ```php
 <?php
 
-function begin(array $attr); //Begins the form. You can optionally specify attributes via the array param.
-function putElement($name, array $attr); //Put a form element. You can optionally specify element attributes via the array param
-function closeElement($name); //Close the current form element
-function end(); //Finish form rendering
+public static function begin(array $attr); //Begins the form. You can optionally specify attributes via the array param.
+public static function putElement($name, array $attr); //Put a form element. You can optionally specify element attributes via the array param
+public static function closeElement($name); //Close the current form element
+public static function end(); //Finish form rendering
 ```
 
 Note that each method returns a string with the related content.

@@ -27,10 +27,10 @@ use to access the actual argument. The following methods are available:
 ```php
 <?php
 
-function getValue(); //Gets the current value
-function getType(); //Gets the value type
-function isNull(); //Indicates if the value is null
-function isEmpty(); //Indicates if the value is empty
+public function getValue(); //Gets the current value
+public function getType(); //Gets the value type
+public function isNull(); //Indicates if the value is null
+public function isEmpty(); //Indicates if the value is empty
 ```
 
 You can use the CLI tool to comfortably generate a custom command.

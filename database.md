@@ -29,17 +29,17 @@ following some other helpers, and then finish it via calling the commit() method
 ```php
 <?php
 
-function column(name, data_type, opt:size); //Init new column creating with name and datatype. Optionally you can also specify the size
-function collation(ident); //Specify a collation for the column
-function charset(ident); //Specify a character set for the column
-function nullable(opt:flag); //Specify if the column can be null or not
-function default(value); //Specify a default value for the column
-function unsigned(opt:flag); //Specify if the column can be unsigned
-function comment(text); //Specify a comment for the column
-function auto_increment(); //Enable auto increment for the column
-function primary_key(); //Set this column as primary key
-function after(column); //Place this column after the specified column
-function commit(); //Finish column creation
+public function column(name, data_type, opt:size); //Init new column creating with name and datatype. Optionally you can also specify the size
+public function collation(ident); //Specify a collation for the column
+public function charset(ident); //Specify a character set for the column
+public function nullable(opt:flag); //Specify if the column can be null or not
+public function default(value); //Specify a default value for the column
+public function unsigned(opt:flag); //Specify if the column can be unsigned
+public function comment(text); //Specify a comment for the column
+public function auto_increment(); //Enable auto increment for the column
+public function primary_key(); //Set this column as primary key
+public function after(column); //Place this column after the specified column
+public function commit(); //Finish column creation
 ```
 
 In your down() method you call the drop() method of a database object.
@@ -122,6 +122,6 @@ DB_DRIVER=mysql
 ```
 
 You can create a new model along with a migration via:
-```plaintext
+```sh
 php asatru make:model <model name> <table name>
 ```
