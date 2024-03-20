@@ -34,6 +34,9 @@ $mailer->setView('layout', array(array('yield', 'yieldfile')), [
 //Or directly set message content:
 $mailer->setMessage($content);
 
+//Used to specify further properties for the current PHPMailer instance. Does overwrite properties previously set by other methods.
+$mailer->setProperties([]);
+
 $mailer->send(); //Send the e-mail
 ```
 

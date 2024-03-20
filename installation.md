@@ -7,7 +7,7 @@ Therefore first go to https://getcomposer.org/ to download and install it.
 After you have installed composer, you can now use it to create a new application
 with the framework by running the command:
 ```
-composer create-project danielbrendel/asatru-php:dev-main
+composer create-project danielbrendel/asatru-php
 ```
 
 Wait until Composer has finished downloading and installing the project.

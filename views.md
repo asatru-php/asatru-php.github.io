@@ -56,6 +56,8 @@ writing code faster. It saves you a bit of time. The following template commands
 @enddebug: Ends the block of @debug
 @env(‚var‘, ‚opt:value‘): Either checks if an env var exists or if a non null value is provided it checks if it equals the value
 @endenv: Ends the block of @env
+@php: Start a PHP block
+@endphp: End a PHP block
 @end: Generic block ending
 @csrf: Inserts a hidden input field with the current CSRF token used for forms
 @method: Specifies the actual request method for your form. For instance @method('PATCH')

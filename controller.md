@@ -19,7 +19,7 @@ The generated code will be something like:
 /**
  * This class represents your controller
  */
-class ExampleController {
+class ExampleController extends BaseController {
     //
 }
 ```
@@ -28,7 +28,7 @@ Now we want a controller action handle the URL <b>/example</b>
 
 Therefore we add a new method to our class
 ```php
-class ExampleController {
+class ExampleController extends BaseController {
     public function example_action($request)
     {
         //Do something here
@@ -43,7 +43,10 @@ and add our route there
 
 return [
     array('/', 'GET', 'index@index'),
-    array('/example', 'GET', 'example@example_action')
+    array('/example', 'GET', 'example@example_action'),
+
+    //You can also give the route a name for identification
+    array('/named-route', 'GET', 'example@example_route', 'named-route')
 ];
 ```
 
@@ -71,7 +74,7 @@ the first element is 'example', the second element is variadic, the third elemen
 
 Then grab the values in the action in order to work with them
 ```php
-class ExampleController {
+class ExampleController extends BaseController {
     public function example_action($request)
     {
         $var1 = $request->arg('var1');
@@ -83,7 +86,7 @@ class ExampleController {
 You can also use the $request object to query POST and GET variables if you don't want
 to use the superglobals $_POST or $_GET.
 ```php
-class ExampleController {
+class ExampleController extends BaseController {
     public function example_action($request)
     {
         $get_or_post_var = $request->params()->query('get_or_post_var');
@@ -121,24 +124,6 @@ class Asatru\View\DownloadHandler {}
 class Asatru\View\CustomHandler {}
 ```
 Note: Use the helper functions instead of the classes for more convenient coding.
-
-If you want you can derive your controller class from 
-```
-Asatru\Controller\Controller
-```
-
-The class offers the following methods
-```php
-//Called before the actual action
-public function preDispatch(): void {}
-
-//Called after the actual action
-public function postDispatch(): void {}
-```
-
-Or you can create a custom base controller which can serve for your common tasks. The base controller
-must be named BaseController and be placed into <b>app/controllers/_base.php</b>. If it exists then it
-will be automatically loaded.
 
 ## Validators
 If your controller handles a form then you also want to verify the form data. Therefore you can use

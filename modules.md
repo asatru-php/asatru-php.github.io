@@ -22,24 +22,15 @@ It will contain the following code:
 ```php
 <?php
 
-    /*
-        Asatru PHP - Module
-    */
+/*
+    Asatru PHP - Module
+*/
 
-    /**
-     * This class represents your module
-     */
-    class Example {
-        public function __construct()
-        {
-            //
-        }
-
-        public function __destruct()
-        {
-            //
-        }
-    }
+/**
+ * This class represents your module
+ */
+class ExampleModule {
+}
 ```
 
 Now you can implement your business logic there.

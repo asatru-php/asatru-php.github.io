@@ -22,34 +22,62 @@ in order to create the table. In order to alter a table you just use the method 
 order to insert a new column. Note that you may not mix creation of new tables with
 altering tables.
 
+Additionally to the add() method you can also use the following helper to create columns.
+Using these helpers you must first call the column() method to init a new column creation,
+following some other helpers, and then finish it via calling the commit() method.
+
+```php
+<?php
+
+function column(name, data_type, opt:size); //Init new column creating with name and datatype. Optionally you can also specify the size
+function collation(ident); //Specify a collation for the column
+function charset(ident); //Specify a character set for the column
+function nullable(opt:flag); //Specify if the column can be null or not
+function default(value); //Specify a default value for the column
+function unsigned(opt:flag); //Specify if the column can be unsigned
+function comment(text); //Specify a comment for the column
+function auto_increment(); //Enable auto increment for the column
+function primary_key(); //Set this column as primary key
+function after(column); //Place this column after the specified column
+function commit(); //Finish column creation
+```
+
 In your down() method you call the drop() method of a database object.
 
 Next step is to create a model for that migration. These are created in the app/models
-folder. Create a file called, for instance, MyModel.php. Then open the script file and create
-a class MyModel. It must have the same name as the script file to be resolved. Also it
-extends the Asatru\Database\Model class. You have to implement the static method
-tableName() which returns a string that identifiers the migration associated with this model.
-After that you can implement your static getters and setters. You can perform select,
-update, insert, delete and raw queries:
+folder. Create a file called, for instance, ExampleModel.php. Then open the script file and
+create a class ExampleModel. It must have the same name as the script file to be
+resolved. Also it extends the Asatru\Database\Model class.
+
+Important note: The model file and class name are associated with the belonging
+migration. A model class named ExampleModel expects a database table with the name
+ExampleModel. In order to comfortable create a model and migration please use the CLI
+tool. There you just have to specify your model name and then everything will be created
+automatically, so you don’t have to manually create models and migrations.
+
+Now you can implement your static getters and setters. You can perform select, update,
+insert, delete and raw queries:
+
 ```php
-public static function Model::where(name, comparision, value): Use a conditional and-query. Call the method for each condition
-public static function Model::whereOr(name, comparision, value): Use a conditional or-query. Call the method for each condition
-public static function Model::limit(count): Limit the query result
-public static function Model::groupBy(ident): Group items by ident
-public static function Model::orderBy(ident, type): Order items by ident. Type is either asc or desc.
-public static function Model::first(): Get first item
-public static function Model::get(): Perform the query and get the items
-public static function Model::all(): Get the entire table
-public static function Model::find(id, key): Find an entry by id. Use key parameter if you want to specify the name of the key so look for
-public static function Model::count(): Get the amount of found items
-public static function Model::aggregate(type, column, opt:name): Find an aggregate of the column (avg, min, max, sum, etc.)
-public static function Model::whereBetween(column, value1, value2): Use a conditional between andquery. Call the method for each condition
-public static function Model::whereBetweenOr(column, value1, value2): Use a conditional between orquery. Call the method for each condition
-public static function Model::update(ident, value): Add this item to the updated item list
-public static function Model::insert(ident, value): Add this item to the inserted item list
-public static function Model::go(): Perform either an update or insert operation
-public static function Model::delete(): Perform a delete operation
-public static function Model::raw(qry, args): Perform a raw database operation
+public static function Model::where(name, comparision, value); //Use a conditional and-query. Call the method for each condition
+public static function Model::whereOr(name, comparision, value); //Use a conditional or-query. Call the method for each condition
+public static function Model::limit(count); //Limit the query result
+public static function Model::groupBy(ident); //Group items by ident
+public static function Model::orderBy(ident, type); //Order items by ident. Type is either asc or desc.
+public static function Model::first(); //Get first item
+public static function Model::get(); //Perform the query and get the items
+public static function Model::all(); //Get the entire table
+public static function Model::find(id, key); //Find an entry by id. Use key parameter if you want to specify the name of the key so look for
+public static function Model::count(); //Get the amount of found items
+public static function Model::aggregate(type, column, opt:name); //Find an aggregate of the column (avg, min, max, sum, etc.)
+public static function Model::whereBetween(column, value1, value2); //Use a conditional between andquery. Call the method for each condition
+public static function Model::whereBetweenOr(column, value1, value2); //Use a conditional between orquery. Call the method for each condition
+public static function Model::update(ident, value); //Add this item to the updated item list
+public static function Model::insert(ident, value); //Add this item to the inserted item list
+public static function Model::go(); //Perform either an update or insert operation
+public static function Model::delete(); //Perform a delete operation
+public static function Model::raw(qry, args); //Perform a raw database operation (Identify current table with the @THIS special variable)
+public static function Model::toSql(opt:params); Return the prepared SQL statement instead of performing the actual query. Set optional parameter to true if the actual params shall be integrated.
 ```
 
 The result of the operation depends of the its kind:
@@ -59,13 +87,15 @@ The result of the operation depends of the its kind:
   - Call the first() method to get the first item in list
   - Call the last() method to get the last item in list
   - Call each(<callback>) in order to iterate through all collected items
+  - Call the asArray() method if you want to return the data as array
 + For inserting, updating and deleting it returns a boolean indicating whether the operation could be executed
 + For getting the count it returns the amount of found entries
 
 In order to manage migrations you can use the following functions:
-+ migrate_fresh(): Drops all tables and recreates them
-+ migrate_list(): Runs only newly created migration scripts
-+ migrate_drop(): Drops all migrations
++ migrate_fresh($echo = false): Drops all tables and recreates them
++ migrate_list($echo = false): Runs only newly created migration scripts
++ migrate_drop($echo = false): Drops all migrations
+If you set $echo to true then it will print out the current handled migration.
 
 The database connection is adjusted via the .env file. 
 ```

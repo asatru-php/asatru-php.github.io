@@ -19,9 +19,9 @@ the name of the model and table is the associated table of the database
 php asatru make:model <name> <database_table_name>
 ```
 
-Creates a new module that is dedicated to your business logic
+Creates a new module that is dedicated to your business logic. Arguments can be –base to create a base class, --extends <opt:name> to extend a base class and –final to create a final class.
 ```plaintext
-php asatru make:module <name>
+php asatru make:module <name> <opt:args[]>
 ```
 
 Creates a new controller
@@ -43,6 +43,11 @@ php asatru make:validator <name> <ident>
 Creates a new event handler with name as class name and an initial handler method called (initial_method)
 ```plaintext
 make:event <name> <initial_method>
+```
+
+Creates a new command class
+```plaintext
+make:command <name>
 ```
 
 Creates a model and migration used for authentication

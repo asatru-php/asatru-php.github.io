@@ -20,5 +20,15 @@ You can now query the config data like this:
 <?php
 
 $data = config('test');
-$attr = $data['attr'];
+
+//Or if in a sub directory
+$data = config('folder/test');
+```
+
+If the config script returns an array then it is returned as object by default. In order to turn off this behaviour and return the array instead, simply pass ‚false‘ as second argument.
+
+```php
+<?php
+
+$data = config('test', false);
 ```

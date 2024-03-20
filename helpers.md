@@ -67,6 +67,15 @@ function envck($item, $value = null) {}
 
 //Used to handle server error response codes. Triggers a call to an associated special route handler that handles the error.
 function abort($code, $ctrl = null) {}
+
+//Return old POST data. Useful if form data shall not be lost if the form data is invalid and the user has to re-submit it.
+function old($key) {}
+
+//Create a slug from a source content string using the given delimiter
+function slug($content, $delimiter = '-') {}
+
+//Get a named route and optionally set all variables via the key-value paired array
+function route($name, $values = []); 
 ```
 
 If you want to use localized Carbon then you can use the Carbon helper to automatically
