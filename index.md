@@ -36,6 +36,7 @@ Table of contents
 - [Exceptions](exceptions.md)
 - [CLI interface](cli.md)
 - [Events](events.md)
+- [Commands](commands.md)
 - [Authentication](authentication.md)
 - [Caching](caching.md)
 - [Testing](testing.md)
