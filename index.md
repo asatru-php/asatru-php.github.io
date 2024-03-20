@@ -43,6 +43,7 @@ Table of contents
 - [mail() wrapper](mail.md)
 - [SMTP mailer](smtp.md)
 - [HTML helpers](htmlhelpers)
+- [Form helper](formhelper.md)
 - [npm/webpack](npm.md)
 
 If you have any issues with the framework, please open an issue on Github.
