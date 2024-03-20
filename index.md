@@ -42,7 +42,7 @@ Table of contents
 - [Testing](testing.md)
 - [mail() wrapper](mail.md)
 - [SMTP mailer](smtp.md)
-- [HTML helpers](htmlhelpers)
+- [HTML helpers](htmlhelpers.md)
 - [Form helper](formhelper.md)
 - [npm/webpack](npm.md)
 
